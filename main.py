@@ -5,7 +5,25 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    return render_template("index.html")
+    context = {
+        'poem': ['На рассвете солнце всходит',
+                'Светит ярко, мир живит',
+                'Ветер легкий, поле водит',
+                'Травы шепчут, лес молчит',
+                'Птицы песнь свою заводят',
+                'В небе синим тает след',
+                'Новый день к себе приводит',
+                'Жизни дарит вновь привет']
+    }
+    return render_template("shablon.html", **context)
+
+@app.route("/shablon/")
+def index2():
+    context = {
+        'caption': 'Шаблон индекса',
+        'link': 'Улыбнитесь Каскадеры'
+    }
+    return render_template("index.html", **context)
 
 @app.route("/blog/")
 def blog():
